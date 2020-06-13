@@ -1,5 +1,5 @@
-# Database Integration Tests with Docker.DotNet
+# Database Integration Tests with TestContainers DotNet
 
 
 ## References & Resources
-* [Docker.DotNet](https://github.com/dotnet/Docker.DotNet)  
+* [TestContainers DotNet](https://github.com/isen-ng/testcontainers-dotnet)  
