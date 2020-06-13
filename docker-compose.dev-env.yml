@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  todoapp.db:
+    image: mysql:5.6
+    ports:
+      - "33061:3306"
+    volumes:
+      - todoappdbdata:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=defaultdb
+      - MYSQL_ROOT_PASSWORD=Password123
+  
+  todoapp.db.migrations:
+    depends_on:
+      - todoapp.db
+    image: todoapp.db.migrations
+    build:
+      context: ./db/
+      dockerfile: Dockerfile
+    command: -cs "server=todoapp.db;database=defaultdb;uid=root;password=Password123;SslMode=None;"
+
+volumes:
+  todoappdbdata:
+  
