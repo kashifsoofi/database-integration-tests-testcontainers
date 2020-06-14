@@ -17,12 +17,11 @@ var solutionPath = "../TodoApp.sln";
 // TASKS
 //////////////////////////////////////////////////////////////////////
 
-var buildDir = Directory("./bin") + Directory(configuration);
-
 Task("Clean")
     .Does(() =>
     {
-        CleanDirectory(buildDir);
+        CleanDirectories(Directory("../**/bin") + Directory(configuration));
+        CleanDirectories(Directory("../**/obj"));
         CleanDirectory(artifactsDir);
 
         var settings = new DotNetCoreCleanSettings
@@ -30,7 +29,7 @@ Task("Clean")
             Configuration = configuration
         };
 
-        DotNetCoreClean(solutionPath, settings);
+        // DotNetCoreClean(solutionPath, settings);
     });
 
 Task("Restore")
